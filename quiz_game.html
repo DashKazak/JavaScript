@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>What is the capital of Wisconsin?</p><br>
+    <button class = 'wrong'>Bayfield</button>
+    <button id='correct-answer'>Madison</button>
+    <button class = 'wrong'>Milwaukee</button>
+
+    <p id='result'></p>
+<script>
+    let correctAnswerButton = document.querySelector('#correct-answer')
+    console.log(correctAnswerButton)
+
+
+    //variable below contains all the incorrect answers
+    let incorrectAnswerButtons = document.querySelectorAll('.wrong')
+    console.log(incorrectAnswerButtons)
+
+
+    let result = document.querySelector('#result')
+
+
+    let defaultButtonColor = correctAnswerButton.style.backgroundColor //the color of line 17 
+
+    // listen to event click
+    correctAnswerButton.addEventListener('click', function(){
+        result.innerHTML = 'Correct answer!'
+        correctAnswerButton.style.backgroundColor = 'lightblue'
+    })
+
+
+    incorrectAnswerButtons.forEach(function(wrongAnswer){ //wrong answer becomes the function for the two elements in the incorrectAnswerButton variable 
+        wrongAnswer.addEventListener('click', function(){
+            result.innerHTML = 'Incorrect answer, try again!'
+            correctAnswerButton.style.backgroundColor= defaultButtonColor})
+    }) 
+   
+
+    
+</script>
+</body>
+</html>

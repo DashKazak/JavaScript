@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for = "list-element">Enter some text to add to the list: </label><br>
+    <input type = "text" name="list-element" id ="list-element">
+    <button id ="add-element-btn">Enter</button>
+    <button id="clear">Clear the list</button> 
+    <!-- clear button will clear the entire list -->
+
+    <ul id="list-itself">
+    </ul>
+<script>
+    // making variables for html elements above 
+    let addButton = document.querySelector('#add-element-btn')
+
+    let listInput = document.querySelector('#list-element')
+
+    let list = document.querySelector('#list-itself')
+
+    let clearListButton = document.querySelector('#clear')
+
+    let elementCount = 0
+
+    let maxElement = 10
+    
+    // ---------------------------------------
+    // allowing to press Enter to add to the list 
+    // enter == add button 
+    document.addEventListener('keyup', function(){
+        //console.log(event.keyCode)
+        if (event.keyCode == 13){
+            addButton.click()
+        }
+    })
+
+    // ----------------------------------------
+    function makeList(){
+        // read the text in the input
+        let newText = listInput.value
+        //console.log(newText)
+        if (newText.length == 0){
+            alert('Enter some text')
+            return //'don't do any more processing if the input is invalid
+        }
+        else if (newText.length > 50){
+            alert('Too long (over 50 characters)')
+            return
+        }
+        // create new li elements
+        let newListItem = document.createElement('li')
+        // document is part of the dom 
+        newListItem.innerHTML = newText
+        // add the new li element as the child of the ul element
+        list.appendChild(newListItem)
+         // clean the input field
+        listInput.value = ''
+        elementCount++
+        console.log(elementCount)
+        if (elementCount >= maxElement){
+            alert('No more elements can be added')
+            return
+        }    
+    }
+
+    // --------------------------------------
+    addButton.addEventListener('click',makeList)
+
+    // --------------------------------------
+    clearListButton.addEventListener('click', function(){
+        // inner html equals empty string which applies to all the child elements of the list
+        list.innerHTML = ''
+        elementCount = 0
+    })
+
+</script>
+</body>
+</html>

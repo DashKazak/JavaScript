@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabbed content</title>
+</head>
+<body>
+<h1>Favorite things</h1>
+
+<div if = "tabs">
+    <button data-content-id = "ramen"class = "tab-button">ramen</button>
+    <button data-content-id = "citrus" class = "tab-button">citrus</button>
+    <button data-content-id = "water" class = "tab-button">water</button>
+</div>
+
+<div id = "ramen" class = "tab-content">Ramen is the perfect winter food</div>
+<div id ="citrus" class = "tab-content">Oranges, clementines, lemons -- I love it all</div>
+<div id = "water" class = "tab-content">Water = A MUST</div>
+<script>
+    let buttons = document.querySelector('.tab-button')
+    let tabContents = document.querySelector('.tab-content')
+
+    tabContents.forEach(function(divEl){
+        divEl.style.display = 'none'
+    })
+
+    buttons.forEach(function(button){
+        button.addEventListener('click', function(){
+            
+        })
+    })
+
+</script>
+</body>
+</html>

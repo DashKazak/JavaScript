@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click here!</button>
+<script>
+    let button = document.querySelector('button')
+    // let to create a variable
+    // document means the whole web page
+    // query selector maens "find first matching css selector" and manipulate it
+// ------------------------------------------------------
+    button.addEventListener('click', function(){
+        // add event listener is the name of the function
+        // function definition starts with function(){..}
+        alert('You clicked the button!') 
+        // button.innerHTML='You clicked the button!'
+        // button.style.backgroundColor = 'red'
+        button.remove()
+    })
+    // event names "mouseover", "click" change page behavior
+    // function definition is an object and you can pass it as an argument -- se example below, showAlert function contains function definition, similar to return in Python
+    // its an instruction of how to execute the function
+// ------------------------------------------------------
+    // code above can be rewritten as 
+    function showAlert(){ //defining the function (does not make it run it)
+        alert('You clicked the button!') 
+    }
+
+    button.addEventListener('click', showAlert) //function is called, notice no parenthesis after showAlert
+
+
+</script>
+</body>
+</html>
