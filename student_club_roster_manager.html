@@ -52,23 +52,32 @@
     <button id="remove-selected-students">Remove selected students</button>
 
 <script>
-
+    // input variables
     let studentName = document.querySelector('#student-name')
-    let studentID = document.querySelector('#student-id')
-    let gpa = document.querySelector('#student-gpa')
 
-    let addButton = document.querySelector('#add-student')
+    let studentID = document.querySelector('#student-id')
+
+    let gpa = document.querySelector('#student-gpa')
 
     let studentList = document.querySelector('#student-list')
 
-    let studentCount = 0
+    // button variables
+
+    let addButton = document.querySelector('#add-student')
 
     let deleteButton = document.querySelector('#remove-selected-students')
 
+    // count variables
+
+    let studentCountNum = document.querySelector('#student-count')
+    
+    let studentCount = 0
+
     function addStudent(){
-        studentCount ++ 
-        console.log(studentCount)
-        document.getElementById('student-count').studentCount= studentCount
+        
+        studentCount ++ //adding to the count
+        studentCountNum.innerHTML =studentCount //showing it in HTML
+        
         let newStudentName = studentName.value
         if(newStudentName.length == 0){
             alert('Enter student name, field can\'t be blank')
@@ -89,9 +98,9 @@
             return
         }
         
-        let newStudentListItem = document.createElement('li')
+        let newStudentListItem = document.createElement('li') //making a li
         newStudentListItem.innerHTML = `Name: ${newStudentName}, Student ID: ${newStudentID}, GPA:  ${newgpa}`
-        studentList.appendChild(newStudentListItem)
+        studentList.appendChild(newStudentListItem) //appending to ul
         
 
 
@@ -103,7 +112,7 @@
 
         document.getElementById('student-name').value=''
         document.getElementById('student-id').value=''
-        document.getElementById('student-gpa').value=''
+        document.getElementById('student-gpa').value='' //clearing
         
     }
     addButton.addEventListener('click', addStudent)
@@ -112,21 +121,10 @@
         let studentsToDelete = document.querySelectorAll('.selected')
         studentsToDelete.forEach(function(newStudentListItem){
             newStudentListItem.remove()
+            studentCount-- //count gets smaller by the amount of chosen students
+            studentCountNum.innerHTML =studentCount //show in html
         })
     })
-    
-    /* Add the following functionality to this page
-
-    [Note on HTML element notation: span#student-count means the span element with id="student-count" ]
-
-    When the page loads:
-        * Using JavaScript, display 0 in the span#student-count  (1pt)
-    
-        * Add an event listener so that when button#add-students is clicked:
-            
-            - Update the span#student-count value to the new number of students (1pt)
-        You should not need to modify any of the HTML. 
-    */
 
 </script>
 
