@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tabbed content</title>
+    <link href = "tab-style.css" rel = "stylesheet" type = "text/css">
 </head>
 <body>
 <h1>Favorite things</h1>
@@ -19,16 +20,37 @@
 <div id ="citrus" class = "tab-content">Oranges, clementines, lemons -- I love it all</div>
 <div id = "water" class = "tab-content">Water = A MUST</div>
 <script>
-    let buttons = document.querySelector('.tab-button')
-    let tabContents = document.querySelector('.tab-content')
+    let buttons = document.querySelectorAll('.tab-button')
+    let tabContents = document.querySelectorAll('.tab-content')
 
     tabContents.forEach(function(divEl){
         divEl.style.display = 'none'
     })
 
+    tabContents[0].style.display = 'block'
+    buttons[0].classList.add('active')
+
     buttons.forEach(function(button){
         button.addEventListener('click', function(){
-            
+            tabContents.forEach(function(divEl){
+                divEl.style.display = 'none'
+            })
+
+            buttons.forEach(function(button){
+                button.classList.remove('active')
+            })
+
+            this.classList.add('active')
+
+            let contentId = this.getAttribute('data-content-id')
+
+            let tabContent = document.querySelector('#' + contentId)
+
+            tabContent.style.display = 'block'
+
+
+
+
         })
     })
 
